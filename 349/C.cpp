@@ -10,11 +10,11 @@ int main(){
     }
 
     //文字列xが文字列Sの部分列かを判定する関数を定義(ラムダ式)
-    auto IsSubarray = [&] (string x) -> bool {
+    auto IsSubarray = [&](string x) -> bool {
         int xi = 0;         //文字列xのi文字目を表す添え字
         for(char c : s){
             if(x[xi] == c) xi++;
-            if(xi == s.size()) return true;
+            if(xi == x.size()) return true;
         }
         return false;
     };
