@@ -1,6 +1,13 @@
 #include<bits/stdc++.h>
 using namespace std;
 
+//
+
+//4近傍を表すのに便利なリスト
+const int di[]= {-1,0,1,0};
+const int dj[]= {0,-1,0,1};
+
+
 struct Med{
     int r,c,e;  //座標{r,c}にエネルギーがeになる薬がある
     Med(){}
@@ -46,7 +53,14 @@ int main(){
         dist[sr][sc] = 0; q.emplace(sr,sc);     //スタートの位置への距離を0として初期化
         while(!q.empty()){          //queueが空になったらループ終了
             auto [i,j] = q.front(); q.pop();            //(i,j)queueの先端を代入し、qから消去
-            
+            for(int dir;dir<4;dir++){
+                int ni = i + di[dir], nj = j + dj[dir];
+                if(ni < 0 || nj < 0 || ni >= h || nj >= w) continue;
+                if(s[ni][nj] == '#') continue;
+                if(dist[ni][nj] != INF) continue;
+                dist[ni][nj] = dist[i][j] +1;
+                q.emplace(ni,nj);
+            }
         }
     }
 }
