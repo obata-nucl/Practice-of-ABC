@@ -9,8 +9,8 @@ int main(){
     rep(i,l-1){
         cout << i+1 << " ";
     }
-    for(int i=r;i>l-1;--i){
-        cout << i << " ";
+    for(int i=r-1;i>l-2;--i){
+        cout << i+1 << " ";
     }
     for(int i=r;i<n;++i){
         cout << i+1 << " ";
